@@ -1,15 +1,35 @@
 
-*{
+*,*::after, *::before{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+:root{
+    --hue: 200;
+    --saturation: 50%;
+    --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+    --background-color: #051937, #002366, #002995, #0028c2, #4112eb;
 }
 main{
     height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to right top, #051937, #002366, #002995, #0028c2, #4112eb);
+    background-image: linear-gradient(to right top, var(--background-color));
+}
+
+.score{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+.score > p{
+    font-size: 4rem;
+    color: var(--foreground-color);
+    opacity: .7;
 }
 .container-game{
     flex-basis: 80%;
@@ -27,30 +47,38 @@ main{
     width: 90%;
     max-width: 600px;
     height: 100%;
-    background-color: black;
+    background-color: hsl(var(--hue),50%,30%);
     border: 3px solid #535b5d;
     overflow: hidden;
 }
 .left-player, .right-player{
+    --position: 50;
+    --size: 15;
     position: absolute;
-    height: 90px;
-    width: 20px;
-    background-color: #fff;
+    height: calc(var(--size)* 1vh);
+    width: 2vw;
+    background-color: var(--foreground-color);
+    top: calc(var(--position) * 1%);
+    transform: translateY(-50%);
 }
 .left-player{
     left: 0;
-    top: 0;
 }
 .right-player{
     right: 0;
 }
+
 .ball{
+    --x: 50;
+    --y: 50;
+    --size: 30;
     position: absolute;
-    left: 0px;
-    top: 200px;
+    left: calc(var(--x)* 1%);
+    top: calc(var(--y)* 1%);
+    transform: translate(-50%,-50%);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: calc(var(--size) * 1px);
+    height: calc(var(--size) * 1px);
     background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/220px-Basketball.png);
     background-position: center;
     background-size: contain;
@@ -80,7 +108,7 @@ main{
     font-family: sans-serif;
 }
 
-.left-info, .right-info, .game-info{
+.left-info, .game-info{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -106,9 +134,111 @@ main{
     border-radius: 4px;
     padding: .1rem;
 }
+.key i{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
 .key-info{
     color: white;
 }
+.level-percentage{
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+.info-section label{
+    font-size: 1rem;
+    font-weight: 800;
+    color: #efcbcb;
+}
+input[type=range] {
+    width: 100%;
+    margin: 6.95px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: #bca42c;
+    border: 2.4px solid #000100;
+    border-radius: 25px;
+    width: 100%;
+    height: 16.1px;
+    cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+    margin-top: -9.35px;
+    width: 30px;
+    height: 30px;
+    background: #610b52;
+    border: 0.4px solid #560000;
+    border-radius: 50px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #d3bb43;
+}
+input[type=range]::-moz-range-track {
+    background: #bca42c;
+    border: 2.4px solid #000100;
+    border-radius: 25px;
+    width: 100%;
+    height: 16.1px;
+    cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    background: #610b52;
+    border: 0.4px solid #560000;
+    border-radius: 50px;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 7.95px 0;
+    color: transparent;
+    width: 100%;
+    height: 16.1px;
+    cursor: pointer;
+}
+input[type=range]::-ms-fill-lower {
+    background: #978423;
+    border: 2.4px solid #000100;
+    border-radius: 50px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #bca42c;
+    border: 2.4px solid #000100;
+    border-radius: 50px;
+}
+input[type=range]::-ms-thumb {
+    width: 30px;
+    height: 30px;
+    background: #610b52;
+    border: 0.4px solid #560000;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #bca42c;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #d3bb43;
+}
+
 
 @media only screen and (min-width: 650px){
     .info{

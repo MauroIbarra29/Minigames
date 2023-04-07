@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong - MiniGames</title> 
     <link rel="stylesheet" href="../css/pong.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <main>
+        <div class="score">
+            <p class="score-left" id="score-left">0</p>
+            <p class="score-divisor"> | </p>
+            <p class="score-right" id="score-right">0</p>
+        </div>
         <div class="container-game">
             <div class="square" id="game">
                 <div class="left-player" id="left-player"></div>
@@ -21,25 +27,8 @@
                 <h3 class="info-title">Left Player</h3>
                 <div class="left-info">
                     <div class="keys">
-                        <div class="key">W</div>
-                        <div class="key-info">Move up</div>
-                    </div>
-                    <div class="keys">
-                        <div class="keydown key">S</div>
-                        <div class="key-info">Move Down</div>
-                    </div>
-                </div>
-            </div>
-            <div class="info-section">
-                <h3 class="info-title">Right Player</h3>
-                <div class="right-info">
-                    <div class="keys">
-                        <div class="key">O</div>
-                        <div class="key-info">Move up</div>
-                    </div>
-                    <div class="keys">
-                        <div class="key">L</div>
-                        <div class="key-info">Move Down</div>
+                        <div class="keydown key"><i class="fa-regular fa-computer-mouse"></i></i></div>
+                        <div class="key-info">Mouse</div>   
                     </div>
                 </div>
             </div>
@@ -50,15 +39,15 @@
                         <div class="key">R</div>
                         <div class="key-info">Restart Game</div>
                     </div>
-                    <div class="keys">
-                        <div class="key">Spc</div>
-                        <div class="key-info">Pause Game</div>
-                    </div>
             </div>
-
+            </div>
+            <div class="info-section">
+                <label for="level">Level</label>
+                <input type="range" min="0" max="100" value="50" id="level" class="level-input">
+                <p class="level-percentage" id="level-percent">50%</p>
             </div>
         </div>
     </main>
-    <script src="../js/pong.js"></script>
+    <script src="../js/pong.js" type="module"></script>
 </body>
 </html>
